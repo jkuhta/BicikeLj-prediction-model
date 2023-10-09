@@ -42,7 +42,7 @@ for i, t in enumerate(ptimes):
         
 #train2['timestamp2'] = np.nan
 for i, t in enumerate(times2):
-    closest_times = np.abs(times[times < t] - t)
+    closest_times = np.abs(times[times - t < pd.Timedelta(minutes=5)] - t)
     if len(closest_times) == 0:
         train2.iloc[i, 1:] = np.nan
         continue
